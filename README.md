@@ -20,7 +20,7 @@
 
 ## [2nd level. Porto Seguro’s Safe Driver Prediction](https://www.kaggle.com/c/porto-seguro-safe-driver-prediction)
 
-- [Data Preparation & Exploration](https://www.kaggle.com/bertcarremans/data-preparation-exploration)
+- [cleared] [Data Preparation & Exploration](https://www.kaggle.com/bertcarremans/data-preparation-exploration)
 - [Interactive Porto Insights - A Plot.ly Tutorial](https://www.kaggle.com/arthurtok/interactive-porto-insights-a-plot-ly-tutorial)
 - [XGBoost CV (LB .284)](https://www.kaggle.com/aharless/xgboost-cv-lb-284)
 - [Porto Seguro Exploratory Analysis and Prediction](https://www.kaggle.com/gpreda/porto-seguro-exploratory-analysis-and-prediction)
@@ -44,7 +44,7 @@
 
 ## [1st level. Statoil/C-CORE Iceberg Classifier Challenge](https://www.kaggle.com/c/statoil-iceberg-classifier-challenge)
 
-- [Keras Model for Beginners (0.210 on LB)+EDA+R&D](https://www.kaggle.com/devm2024/keras-model-for-beginners-0-210-on-lb-eda-r-d)
+- [cleared] [Keras Model for Beginners (0.210 on LB)+EDA+R&D](https://www.kaggle.com/devm2024/keras-model-for-beginners-0-210-on-lb-eda-r-d)
 - [Transfer Learning with VGG-16 CNN+AUG LB 0.1712](https://www.kaggle.com/devm2024/transfer-learning-with-vgg-16-cnn-aug-lb-0-1712)
 - [Submarineering.EVEN BETTER PUBLIC SCORE until now.](https://www.kaggle.com/submarineering/submarineering-even-better-public-score-until-now)
 - [Keras+TF LB 0.18](https://www.kaggle.com/wvadim/keras-tf-lb-0-18)
