@@ -23,3 +23,7 @@ except:
 else:
     reciprocal = 1/num
     print(reciprocal)
+    
+# 여러행 선택
+df.loc[[1,4,10],:]
+df.loc[df2.index.value,, :]
