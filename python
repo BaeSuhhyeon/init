@@ -9,3 +9,17 @@ print(df_teenage.head())
 
 trainset = trainset.sample(frac =.01, random_state=803)
 testset = testset.sample(frac =.01, random_state=803)
+
+# dataframe concat (cbind, rbind)
+ pd.concat([trainset, review], axis=1) # cbind
+ 
+ # try catch
+ 
+ try:
+    num = int(input("Enter a number: "))
+    assert num % 2 == 0
+except:
+    print("Not an even number!")
+else:
+    reciprocal = 1/num
+    print(reciprocal)
