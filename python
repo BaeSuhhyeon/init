@@ -1,0 +1,11 @@
+
+# filtering
+
+mask1 = (titanic.age >= 10) & (titanic.age < 20)
+df_teenage = titanic.loc[mask1,:]
+print(df_teenage.head())
+
+# sampling
+
+trainset = trainset.sample(frac =.01, random_state=803)
+testset = testset.sample(frac =.01, random_state=803)
