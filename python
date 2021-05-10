@@ -30,3 +30,7 @@ df.loc[df2.index.value,, :]
 
 # rename 
 train.rename(columns = {'review':'review3'}, inplace = True)
+
+# sort
+df.sort_values('label', axis=0, ascending=False) 
+axis = 1 : 열이름기준으로 정렬
