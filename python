@@ -37,3 +37,10 @@ axis = 1 : 열이름기준으로 정렬
 
 # 중복 확인, 제거
 df.drop_duplicates(['key1'], keep=c('first','last',False))
+
+# matplot 한글깨짐
+import matplotlib.font_manager as fm
+
+font_path = r'/home/NanumGothic.ttf'
+fontprop = fm.FontProperties(fname=font_path, size=10)
+plt.annotate(ha='right', va='bottom',fontproperties=fontprop)
