@@ -47,3 +47,10 @@ plt.annotate(ha='right', va='bottom',fontproperties=fontprop)
 
 # 특정 행 빼고 선택
 filtered_df=df.loc[:,df.columns!="Sector"]
+
+# mutate ifelse
+df['newCol'] = df.apply(lambda X: X.col1 - 2 if X.col2 == 'c' else X.col1 + 4, axis=1)
+iris['new_column'] = ['Large' if t else 'Small' for t in list(iris['Sepal.Length'] > 4)]
+
+# is not nan
+ np.invert(np.isnan(a))
