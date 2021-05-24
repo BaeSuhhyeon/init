@@ -44,3 +44,6 @@ import matplotlib.font_manager as fm
 font_path = r'/home/NanumGothic.ttf'
 fontprop = fm.FontProperties(fname=font_path, size=10)
 plt.annotate(ha='right', va='bottom',fontproperties=fontprop)
+
+# 특정 행 빼고 선택
+filtered_df=df.loc[:,df.columns!="Sector"]
