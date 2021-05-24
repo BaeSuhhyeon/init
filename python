@@ -53,4 +53,4 @@ df['newCol'] = df.apply(lambda X: X.col1 - 2 if X.col2 == 'c' else X.col1 + 4, a
 iris['new_column'] = ['Large' if t else 'Small' for t in list(iris['Sepal.Length'] > 4)]
 
 # is not nan
- np.invert(np.isnan(a))
+np.invert(np.isnan(a))
