@@ -1,0 +1,202 @@
+# NLP
+[youtube]{https://www.youtube.com/watch?v=dKYFfUtij_U&list=PLVNY1HnUlO26qqZznHVWAqjS1fWw0zqnT}
+
+## 1. Bag of Words
+
+단점
+- If we use all English words for bag of words, the vector will be very long, but very few non zeros
+- Frequent words has more power
+- Ignoring word orders
+- Out of vocabulary
+
+## 2. n- 그램
+
+1-gram(unigram) <br> 
+ex ) fine thank you <br>
+word level : [fine, thank, you] <br>
+Character level : [f, i, n, e, , t,h, a, n, k, , y, o, u]
+
+2-gram(bigram) <br>
+ex ) fine thank you <br>
+word level : [fine thank, thank you] <br>
+character level : [fi, in, ne, e, t, th, ha, an, nk, k, y, yo, ou]
+
+3-gram(trigram) <br>
+ex ) fine thank you <br> 
+word level : [fine thank you] <br>
+character level : [fin, ine, ne, ... ]
+
+why n-gram?
+- Overcome bag of words drawbacks (**ignoring sequence of words**)
+- Next word prediction
+- Find Misspelling
+- And more..
+
+Navie next word prediction
+-> n-gram을 사용하면 자연어처리 application 활용에 좋음
+
+## 3. TF-IDF
+Term Frequency * Inverse Document Frequency
+
+Why TF-IDF?
+- To find how relevant a term is in a document
+- 문장이 주어졌을때 각 단어별로 그 문장의 연관성을 수치로 나타낸 값
+
+What is TF?
+- TF measures how frequently a term occurs in a document
+
+Why TF?
+- If a term occurs more times than other terms in a document, the term has more relevance than other terms for the document
+
+What is IDF ?
+- Inverse document frequency 많은 문서에 등장하는 단어에 페널티를 부여
+- Log ( Total # of Docs / # of Docs with the term in it)
+- Log ( Total # of Docs / # of Docs with the term in it + 1)  # For smoothing (avoid division by zero)
+
+## 4. 자연어처리의 유사도 측정 방법(거리측정, 코사인유사도)
+
+1. Euclidean Distance Similarity
+2. Cosine Similarity
+The angle between two term frequency vectors cannot be greater than 90
+각도가 좁을수록 유사도가 높다.
+
+## 5. TF-IDF 문서 유사도
+
+How to get document similarity ?
+- Cosine Similarity on Bag of Words
+- Cosine Similarity on TF-IDF with Bag of Words
+
+Advantage of TF-IDF bag of words
+- Easy to get documnet similarity
+- Keep relevant words score
+- lower just frequent words score
+
+Drawback of TF-IDF bag of words
+- Only based on Terms(words) 단어만 봄 ( 유사도는 보지 않음 )
+- Weak on capturing document topic 단어는 알되, 주제는 모름
+- Weak handling synonym (different words but same meaning) 같은 뜻을 가지고 있는 다른 단어에 약함
+
+How to overcome Drawbacks of TF-IDF?
+- LSA (Latent Semantic Analysis) 같이 존재하는 단어들 고려
+- Word Embeddings (Word2Vec, Glove) 
+- ConceptNet 단어간의 유사도 측정
+
+## 6. 잠재 의미 분석 (LSA)
+ 
+TF-IDF or Bag of Words similarity is based on **word**, **not topic**. <br>
+LSA similarity is based on **TOPIC** <br>
+Using SVD matrix decomposition <br>
+A =  U(word matrix for topic) Simga(Topic Strength) V^T (Document matrix for topic) 
+ 
+## 7. 단어 벡터 변환 (word2vec)
+
+Encoding: Convert text to number <br>
+One Hot Encoding doesn't have similarity. <br>
+Embedding is dense vector with similarity. <br>
+
+word2vec is word embedding. <br>
+similarity comes form neighbor words.
+
+NNLM과 Word2Vec의 차이를 비교해봅시다. 우선 예측하는 대상이 달라졌습니다. NNLM은 언어 모델이므로 다음 단어를 예측하지만, Word2Vec(CBOW)은 워드 임베딩 자체가 목적이므로 다음 단어가 아닌 중심 단어를 예측하게 하여 학습합니다. 중심 단어를 예측하게 하므로서 NNLM이 예측 단어의 이전 단어들만을 참고하였던 것과는 달리, Word2Vec은 예측 단어의 전, 후 단어들을 모두 참고합니다.
+
+구조도 달라졌습니다. Word2Vec은 우선 NNLM에 존재하던 활성화 함수가 있는 은닉층을 제거하였습니다. 이에 따라 투사층 다음에 바로 출력층으로 연결되는 구조입니다.
+
+## 8. WMD 문서 유사도 구하기 (word mover's distance)
+Word2vec 
+- Word Embedding
+- Word similarity comes from the word's neighbor words
+- You can also easily download pre-trained word2vec
+- GoogleNews-vectors-negative300.bin.gz
+
+<br>
+WMD document representation
+- Normalized Bag of Words after stop words removal
+
+1. Removing the stop words
+2. Normalized Bag of Words
+
+reference from : http://proceedings.mlr.press/v37/kusnerb15.pdf
+
+## 9. [딥러닝] RNN 기초
+
+I google at work. <br>
+I work at google. <br>
+동사, 명사 등을 추론하는 모델이 RNN이라고 할 수있다.
+
+hidden state 를 통해 과거반영 후 softmax를 지나 명사, 동사 판단 <br>
+pred,target의 error를 최소화하는 방향으로 back propagation through time(bptt) 사용 <br>
+감정 분석도 동일
+
+## 10. [딥러닝] LSTM 쉽게 이해하기
+long sequence  <br>
+-> 미분값이 1보다 작으면 gradient vanishing 발생 <br>
+-> 미분값이 1보다 크면 gradient exploding 발생
+
+LSTM : introducing **memory cell** in RNN <br>
+memory cell : mathematically decide to forget
+
+## 11. 시퀀스 투 시퀀스 + 어텐션 모델
+
+Context vector may not have all necessary info if input with long sentence. <br>
+How can we improve it ? <br>
+Rather than using fixed context vector, We can use **encoder's each state** with current state to generate dynamic context vector.
+
+인코더에서 나왔던 각각의 모든 state를 활용하자 -> 고정된 size의 문제를 해결할 수 있다.
+
+1. Encode info into sequence of vectors not in a single context vector
+2. Choose a subset of these vectors adaptively while decoding the translation
+<br>
+
+1. attention weight를 통해서 encode의 state에서 어디에 포커스해서 볼것인지
+2. context vecotor가 state별로 달라진다. 
+<br>
+Teacher forcing : 앞에서 틀리게 예측해도 다음 state에 정답을 알려주는 것. 학습을 보다 효율적으로 만들어줌.
+
+## 12. 트랜스포머 ( 어텐션 이즈 올 유 니드 )
+
+인코더 디코더를 발전시킨 딥러닝 모델<br>
+rnn을 사용하지 않는다는 차이점이 있다.<br>
+기존 rnn기반의 인코더 디코더보다 학습이 빠르고 성능이 좋아서 큰 관심을 끌었다.
+
+트랜스포머는 병렬화, 한방에 처리.<br>
+rnn 순차적으로  / 트랜스포머는 한방에
+
+전통적인 rnn은 i love you 순차적으로 i, love, you를 받아들여서 context vector가 나오고 번역이 나옴.<br>
+디코더는 end 시그널이 나올때까지.<br>
+
+전통적인 인코더 디코더는 고정된 크기라서 책과 같은 긴 문장은 모두 저장하기 힘들어서 번역결과가 엉터리인 경우가 많다.<br>
+
+RNN을 사용하지 않고 attention 만으로 한번에 -> 트랜스포머<br>
+
+** 트랜스포머** : 기존의 인코더 디코더 주요 컨셉을 가지고 rnn을 없앰 <br>
+단어 위치, 순서가 중요하다.  -> positional encoding. 상대적인 위치를 encoding <br>
+트랜스포머는 sin, cos을 사용한 positional encoding, 항상 -1~1사이 값, 긴문장도 에러없이 <br>
+그 후 self attention 연산.  <br>
+query, key, value : Wq, Wk, Wv는 weight matrix로 딥러닝 학습으로 최적화가 됨. <br>
+행렬 곱으로 계산 가능 -> 병렬 처리 <br>
+query, key, value는 vector 형태 <br>
+multi head attention : 여러개의 layer를 병렬 처리 <br>
+one hot encoding이 아닌 label smoothing 사용<br>
+
+## GPT -1
+트랜스포머의 인코더 - BERT / 디코더 - GPT
+
+GPT -1
+- Natural Language Inference
+- Question Answering
+- Semantic Similarity
+- Classification
+
+<장점>
+- use transformer decoder
+- unsupervised learning with unlabeled text for pre training
+- fine tuning without additional task specific model
+- sub word tokenization (byte 단위로 단어를 쪼갬 (ex) hack, able, deep, learn, ing)
+
+## GPT -2
+
+GPT -2
+fine tuning 없음. <br>
+p(output | input, task) <br>
+how are you, translate to Korean -> 잘지내
+
