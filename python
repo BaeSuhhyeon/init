@@ -57,3 +57,9 @@ np.invert(np.isnan(a))
 
 # merge 열이름이 다를때
 join1.merge(pro_hour_max, how='left',left_on=['product_id', 'order_hour_of_day'], right_on=['product_id', 'prohour_order_hour_of_day'])
+
+# save & load model
+bestmodel.save_model("xgb.json")
+bestmodel = xgb.Booster()
+bestmodel.load_model("xgb.json")
+
