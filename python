@@ -29,7 +29,7 @@ df.loc[[1,4,10],:]
 df.loc[df2.index.value,, :]
 
 # rename 
-train.rename(columns = {'review':'review3'}, inplace = True)
+df.rename(columns = {'review':'review3'}, inplace = True)
 
 # sort
 df.sort_values('label', axis=0, ascending=False) 
@@ -68,5 +68,5 @@ lgb.Booster(model_file = "np_210608.json")
 # histogram
 import seaborn as sns
 sns.set_style('darkgrid')
-sns.histplot(input1_uncorrect.pred_probabilities).set_title("first")
+sns.histplot(df.pred_probabilities).set_title("first")
 
