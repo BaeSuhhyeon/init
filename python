@@ -70,3 +70,6 @@ import seaborn as sns
 sns.set_style('darkgrid')
 sns.histplot(df.pred_probabilities).set_title("first")
 
+# voting Classifier
+votingC = VotingClassifier(estimators = [('xgb1', xgb1), ('xgb2', xgb2), ('lgb', lgb1) ], voting='soft', n_jobs=4)
+pred = votingC.predict_proba(test_x)
